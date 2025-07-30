@@ -13,6 +13,19 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    command: npm start
+  test:
+    build: .
+    environment:
+      - NODE_ENV=test
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=myapp
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: npm test
   postgres:
     image: postgres:15
     environment:
