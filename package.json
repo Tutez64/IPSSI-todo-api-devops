@@ -4,7 +4,7 @@
   "description": "Projet solo DevOps : API Todo dockerisée",
   "main": "index.js",
   "scripts": {
-    "test": "npx jest --passWithNoTests",
+    "test": "jest --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write ."

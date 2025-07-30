@@ -65,4 +65,15 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  try {
+    const { title, description, status } = req.body;
+    if (!title) return res.status(400).json({ error: 'Title is required' });
+    const task = await Task.create({ title, description, status });
+    res.status(201).json(task);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;
